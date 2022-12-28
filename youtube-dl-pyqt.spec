@@ -17,6 +17,7 @@ BuildRequires:	python3dist(pip)
 BuildRequires:	python3dist(qtpy)
 BuildRequires:	python3dist(setuptools)
 BuildRequires:	python3dist(wheel)
+# tests
 #BuildRequires:	ffmpeg
 
 Requires:	python3
@@ -49,11 +50,6 @@ A cross platform front-end GUI of the popular youtube-dl written in PyQt.
 # remove executables
 find . -name \*exe -delete
 
-# move source according to patch0
-#mkdir youtube_dl_gui/
-#mv GUI Threads UI main.py youtube_dl_gui/
-#mv youtube_dl youtube_dl_gui/
-
 # use system youtube-dl
 sed -i -e '/"youtube_dl",/d' \
 	-e '/"youtube_dl.downloader",/d' \
@@ -70,10 +66,6 @@ sed -i -e '/"youtube_dl",/d' \
 # fix path
 install -dm 0755 %{buildroot}%{py_puresitedir}/youtube_dl_gui/
 mv %{buildroot}%{py_puresitedir}/{main.py,GUI,Threads,UI} %{buildroot}%{py_puresitedir}/youtube_dl_gui/
-#mv %{buildroot}%{py_puresitedir}/youtube_dl %{buildroot}%{py_puresitedir}/youtube_dl_gui/
-
-# use system youtube-dl
-#rm -fr %{buildroot}%{py_puresitedir}/youtube_dl
 
 # icons
 for d in 16 32 48 64 72 128 256
