@@ -1,0 +1,12 @@
+--- A/setup.py
++++ b/setup.py
+@@ -172,7 +172,7 @@
+     cmdclass.update({"pyinstaller": BuildPyinstallerBin})
+ else:
+     params = setup_data()
+-    params["entry_points"] = {"console_scripts": ["youtube-dl-gui = main:main"]}
++    params["entry_points"] = {"console_scripts": ["youtube-dl-gui = youtube_dl_gui.main:main"]}
+ 
+ 
+ setup(
+
